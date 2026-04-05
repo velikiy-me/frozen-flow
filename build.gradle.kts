@@ -68,7 +68,7 @@ val copyLibs by tasks.registering(Copy::class) {
     into("${layout.buildDirectory.get()}/libs/libs")
 }
 
-val appMainClass = "me.velikiy.frozenflow.WireMockServerStarterKt"
+val appMainClass = "me.velikiy.frozenflow.MainKt"
 
 kotlin {
     compilerOptions {
