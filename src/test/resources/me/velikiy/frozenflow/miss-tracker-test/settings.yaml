@@ -1,0 +1,7 @@
+general:
+  max-miss-reports: 2
+
+snapshot:
+  headers:
+    - 'Accept'
+    - 'Content-Type'

@@ -1,0 +1,14 @@
+{
+  "request": {
+    "urlPath": "/json-body-relative-date",
+    "method": "POST",
+    "headers": {
+      "Content-Type": {
+        "contains": "application/json"
+      }
+    }
+  },
+  "response": {
+    "status": 200
+  }
+}

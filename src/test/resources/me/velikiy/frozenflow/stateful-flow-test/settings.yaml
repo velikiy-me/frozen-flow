@@ -1,0 +1,57 @@
+snapshot:
+  headers:
+    - 'Accept'
+    - 'Content-Type'
+services:
+  test-stateful-flow:
+    proxy-base-url: "http://localhost:{port}"
+    paths:
+      - path: '/store/\d+'
+        mappings:
+          - request:
+              patterns:
+                body:
+                  - ref: '$.attribute'
+                    type: 'any-string'
+            state:
+              - action: 'put'
+                context: "test-stateful-flow:{{request.pathSegments.[2]}}"
+                properties:
+                  storedValue: "{{jsonPath request.body '$.attribute'}}"
+              - action: 'put'
+                context: "test-stateful-flow:stored"
+                properties:
+                  value: true
+      - path: '/retrieve/\d+'
+        mappings:
+          - response:
+              templates:
+                body:
+                  - ref: '$.value'
+                    value: "{{state context=(join 'test-stateful-flow' request.pathSegments.[2] ':') property='storedValue'}}"
+      - path: '/check/\d+'
+        mappings:
+          - request:
+              patterns:
+                state:
+                  - ref: 'test-stateful-flow:{{request.pathSegments.[2]}}'
+                    type: 'exists'
+                  - ref: 'test-stateful-flow:stored'
+                    type: 'exists'
+            response:
+              templates:
+                body:
+                  - ref: '$.value'
+                    value: "{{state context=(join 'test-stateful-flow' request.pathSegments.[2] ':') property='storedValue'}}"
+      - path: '/check'
+        mappings:
+          - request:
+              patterns:
+                state:
+                  - ref: 'test-stateful-flow:stored'
+                    type: 'exists'
+      - path: '/delete/\d+'
+        mappings:
+          - state:
+              - action: 'delete'
+                context: "test-stateful-flow:{{request.pathSegments.[2]}}"

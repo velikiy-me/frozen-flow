@@ -1,0 +1,45 @@
+snapshot:
+  headers:
+    - 'Accept'
+    - 'Content-Type'
+    - 'Custom-Header'
+    - 'Absent-Header'
+
+services:
+  test-not-match-logging:
+    proxy-base-url: 'http://localhost:{port}'
+    paths:
+      - path: '/some-path'
+        mappings:
+          - conditions:
+              headers:
+                - ref: 'Content-Type'
+                  value: 'application/json'
+            request:
+              patterns:
+                body:
+                  - ref: '$.attr2'
+                    type: 'regex'
+                    value: 'value2'
+                  - ref: '$.attr3'
+                    type: 'regex'
+                    value: 'value2'
+                  - ref: '$.attr4'
+                    type: 'regex'
+                    value: 'value2'
+          - conditions:
+              headers:
+                - ref: 'Content-Type'
+                  value: 'application/xml'
+            request:
+              patterns:
+                body:
+                  - ref: '/root/node1/text()'
+                    type: 'regex'
+                    value: 'value2'
+                  - ref: '/root/@attr2'
+                    type: 'regex'
+                    value: 'value2'
+                  - ref: '/root/@attr3'
+                    type: 'regex'
+                    value: 'value2'

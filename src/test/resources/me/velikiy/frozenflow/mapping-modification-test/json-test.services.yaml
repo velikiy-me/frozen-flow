@@ -1,0 +1,74 @@
+test-json-mappings:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/json-body'
+      mappings:
+        - request:
+            patterns:
+              body:
+                - ref: '$.relativeDate'
+                  type: 'relative-date'
+                  format: 'yyyy-MM-dd'
+                - ref: '$.zonedRelativeDate'
+                  type: 'relative-date'
+                  timezone: 'Asia/Hong_Kong'
+                  format: 'yyyy-MM-dd'
+                - ref: '$.nullRelativeDate'
+                  type: 'relative-date'
+                  format: 'yyyy-MM-dd'
+                - ref: '$.uuid'
+                  type: 'uuid'
+                - ref: '$.regex'
+                  type: 'regex'
+                  value: '^\d{10}$'
+                - ref: '$.afterDateTime'
+                  type: 'after'
+                  format: "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                  value: 'now -1 hours'
+                - ref: '$.afterDateTimeUnix'
+                  type: 'after'
+                  format: 'unix'
+                  value: 'now -1 hours'
+                - ref: '$.beforeDateTime'
+                  type: 'before'
+                  format: "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                  value: 'now +1 hours'
+                - ref: '$.beforeDateTimeUnix'
+                  type: 'before'
+                  format: "unix"
+                  value: 'now +1 hours'
+                - ref: '$.any'
+                  type: 'any'
+                - ref: '$.anyString'
+                  type: 'any-string'
+                - ref: '$.value'
+                  value: '${json-unit.regex}^Some value$'
+                - ref: '$.array[*].relativeDate'
+                  type: 'relative-date'
+                  format: 'yyyy-MM-dd'
+          response:
+            templates:
+              body:
+                - ref: '$.valueTemplate'
+                  value: 'Replaced value'
+                - ref: '$.intValueTemplate'
+                  value: 2
+                - ref: '$.booleanValueTemplate'
+                  value: true
+                - ref: '$.nullValueTemplate'
+                  value: 'nonNullValue'
+                - ref: '$.array[*].relativeDate'
+                  value: "{{jsonPath request.body '$.array[{0}].relativeDate'}}"
+    - path: '/json-body-relative-date'
+      mappings:
+        - request:
+            patterns:
+              body:
+                - ref: '$.zonedRelativeDate'
+                  type: 'relative-date'
+                  timezone: 'Asia/Hong_Kong'
+                  format: 'yyyy-MM-dd'
+                - ref: '$.truncatedRelativeDate'
+                  type: 'relative-date'
+                  format: 'yyyy-MM-dd'
+                  truncation: 'first day of month'

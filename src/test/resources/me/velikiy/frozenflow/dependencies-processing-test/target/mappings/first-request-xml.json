@@ -1,0 +1,13 @@
+{
+  "request": {
+    "urlPath": "/first-request-xml",
+    "method": "POST"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "text/xml"
+    },
+    "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE response PUBLIC \"-//SomeRoot//DTD something v1//EN\" \"http://someinvalidDtd\"><response result=\"{{randomValue type='UUID'}}\"><resultList>{{randomValue type='UUID'}}</resultList><resultList>{{randomValue type='UUID'}}</resultList></response>"
+  }
+}

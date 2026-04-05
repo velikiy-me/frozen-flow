@@ -1,0 +1,137 @@
+[
+  {
+    "equalToXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><request>\n    <relativedate>${xmlunit.ignore}</relativedate>\n    <relativedateAttr attr=\"${xmlunit.ignore}\"/>\n    <zonedrelativedate>${xmlunit.ignore}</zonedrelativedate>\n    <zonedrelativedateAttr attr=\"${xmlunit.ignore}\"/>\n    <uuid>${xmlunit.ignore}</uuid>\n    <uuidAttr attr=\"${xmlunit.ignore}\"/>\n    <regex>${xmlunit.ignore}</regex>\n    <regexAttr attr=\"${xmlunit.ignore}\"/>\n    <afterdatetime>${xmlunit.ignore}</afterdatetime>\n    <afterdatetimeAttr attr=\"${xmlunit.ignore}\"/>\n    <afterdatetimeunix>${xmlunit.ignore}</afterdatetimeunix>\n    <afterdatetimeunixAttr attr=\"${xmlunit.ignore}\"/>\n    <beforedatetime>${xmlunit.ignore}</beforedatetime>\n    <beforedatetimeAttr attr=\"${xmlunit.ignore}\"/>\n    <beforedatetimeunix>${xmlunit.ignore}</beforedatetimeunix>\n    <beforedatetimeunixAttr attr=\"${xmlunit.ignore}\"/>\n    <any>${xmlunit.ignore}</any>\n    <anyAttr attr=\"${xmlunit.ignore}\"/>\n    <anystring>${xmlunit.ignore}</anystring>\n    <anystringAttr attr=\"${xmlunit.ignore}\"/>\n    <value>${xmlunit.matchesRegex(^Some value$)}</value>\n    <valueAttr attr=\"${xmlunit.matchesRegex(^Some value$)}\"/>\n    <array>\n        <item>\n            <relativedate>${xmlunit.ignore}</relativedate>\n        </item>\n        <item>\n            <relativedate>${xmlunit.ignore}</relativedate>\n        </item>\n    </array>\n</request>"
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/relativedate[1]/text()",
+      "equalToDateTime": "now ##dateShift1 days",
+      "actualFormat": "yyyy-MM-dd",
+      "truncateExpected": "first hour of day",
+      "applyTruncationLast": true
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/relativedateAttr[1]/@attr",
+      "equalToDateTime": "now ##dateShift1 days",
+      "actualFormat": "yyyy-MM-dd",
+      "truncateExpected": "first hour of day",
+      "applyTruncationLast": true
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/zonedrelativedate[1]/text()",
+      "equalToDateTime": "now ##timeShift1 hours",
+      "actualFormat": "yyyy-MM-dd",
+      "truncateExpected": "first hour of day",
+      "applyTruncationLast": true
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/zonedrelativedateAttr[1]/@attr",
+      "equalToDateTime": "now ##timeShift1 hours",
+      "actualFormat": "yyyy-MM-dd",
+      "truncateExpected": "first hour of day",
+      "applyTruncationLast": true
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/uuid[1]/text()",
+      "matches": "^[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$"
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/uuidAttr[1]/@attr",
+      "matches": "^[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$"
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/regex[1]/text()",
+      "matches": "^\\d{10}$"
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/regexAttr[1]/@attr",
+      "matches": "^\\d{10}$"
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/afterdatetime[1]/text()",
+      "after": "now -1 hours",
+      "actualFormat": "yyyy-MM-dd'T'HH:mm:ss'Z'"
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/afterdatetimeAttr[1]/@attr",
+      "after": "now -1 hours",
+      "actualFormat": "yyyy-MM-dd'T'HH:mm:ss'Z'"
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/afterdatetimeunix[1]/text()",
+      "after": "now -1 hours",
+      "actualFormat": "unix"
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/afterdatetimeunixAttr[1]/@attr",
+      "after": "now -1 hours",
+      "actualFormat": "unix"
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/beforedatetime[1]/text()",
+      "before": "now +1 hours",
+      "actualFormat": "yyyy-MM-dd'T'HH:mm:ss'Z'"
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/beforedatetimeAttr[1]/@attr",
+      "before": "now +1 hours",
+      "actualFormat": "yyyy-MM-dd'T'HH:mm:ss'Z'"
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/beforedatetimeunix[1]/text()",
+      "before": "now +1 hours",
+      "actualFormat": "unix"
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/beforedatetimeunixAttr[1]/@attr",
+      "before": "now +1 hours",
+      "actualFormat": "unix"
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/array[1]/item[1]/relativedate[1]/text()",
+      "equalToDateTime": "now ##dateShift2 days",
+      "actualFormat": "yyyy-MM-dd",
+      "truncateExpected": "first hour of day"
+    }
+  },
+  {
+    "matchesXPath": {
+      "expression": "/request[1]/array[1]/item[2]/relativedate[1]/text()",
+      "equalToDateTime": "now ##dateShift3 days",
+      "actualFormat": "yyyy-MM-dd",
+      "truncateExpected": "first hour of day"
+    }
+  }
+]

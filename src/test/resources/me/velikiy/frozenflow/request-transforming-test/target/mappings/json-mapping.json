@@ -1,0 +1,23 @@
+{
+  "request": {
+    "urlPath": "/json",
+    "method": "POST",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "application/json"
+      }
+    },
+    "bodyPatterns": [
+      {
+        "equalToJson": {"attribute": "value"}
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json;charset=UTF-8"
+    },
+    "jsonBody": {"attribute": "value"}
+  }
+}

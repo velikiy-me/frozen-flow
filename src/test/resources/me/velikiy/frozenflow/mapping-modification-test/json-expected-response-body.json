@@ -1,0 +1,14 @@
+{
+  "valueTemplate": "Replaced value",
+  "intValueTemplate": 2,
+  "booleanValueTemplate": true,
+  "nullValueTemplate": null,
+  "array": [
+    {
+      "relativeDate": "2023-07-01"
+    },
+    {
+      "relativeDate": "2024-01-01"
+    }
+  ]
+}

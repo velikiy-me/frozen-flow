@@ -1,0 +1,31 @@
+{
+  "id": "e9f9cbd7-32e2-4b21-9130-6a3fe5fe812a",
+  "name": "xml-request-mapping",
+  "request": {
+    "method": "POST",
+    "url": "/xml-request-mapping",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "application/xml"
+      }
+    },
+    "bodyPatterns": [
+      {
+        "equalToXml": "<request><element>value</element></request>"
+      },
+      {
+        "matchesXPath": {
+          "expression": "/request/element/text()",
+          "equalTo": "value"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/xml"
+    },
+    "body": "<response><result>ok</result></response>"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "urlPath": "/json-body",
+    "method": "POST",
+    "headers": {
+      "Content-Type": {
+        "contains": "application/json"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": "success"
+  }
+}

@@ -1,0 +1,81 @@
+[
+  {
+    "equalToJson": "{\"relativeDate\":\"${json-unit.any-string}\",\"zonedRelativeDate\":\"${json-unit.any-string}\",\"nullRelativeDate\":null,\"uuid\":\"${json-unit.any-string}\",\"regex\":\"${json-unit.any-string}\",\"afterDateTime\":\"${json-unit.ignore}\",\"afterDateTimeUnix\":\"${json-unit.ignore}\",\"beforeDateTime\":\"${json-unit.ignore}\",\"beforeDateTimeUnix\":\"${json-unit.ignore}\",\"any\":\"${json-unit.ignore}\",\"anyString\":\"${json-unit.any-string}\",\"value\":\"${json-unit.regex}^Some value$\",\"array\":[{\"relativeDate\":\"${json-unit.any-string}\"},{\"relativeDate\":\"${json-unit.any-string}\"}]}",
+    "ignoreArrayOrder": true,
+    "ignoreExtraElements": false
+  },
+  {
+    "matchesJsonPath": {
+      "expression": "$['relativeDate']",
+      "equalToDateTime": "now ##dateShift1 days",
+      "actualFormat": "yyyy-MM-dd",
+      "truncateExpected": "first hour of day",
+      "applyTruncationLast": true
+    }
+  },
+  {
+    "matchesJsonPath": {
+      "expression": "$['zonedRelativeDate']",
+      "equalToDateTime": "now ##timeShift1 hours",
+      "actualFormat": "yyyy-MM-dd",
+      "truncateExpected": "first hour of day",
+      "applyTruncationLast": true
+    }
+  },
+  {
+    "matchesJsonPath": {
+      "expression": "$['uuid']",
+      "matches": "^[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$"
+    }
+  },
+  {
+    "matchesJsonPath": {
+      "expression": "$['regex']",
+      "matches": "^\\d{10}$"
+    }
+  },
+  {
+    "matchesJsonPath": {
+      "expression": "$['afterDateTime']",
+      "after": "now -1 hours",
+      "actualFormat": "yyyy-MM-dd'T'HH:mm:ss'Z'"
+    }
+  },
+  {
+    "matchesJsonPath": {
+      "expression": "$['afterDateTimeUnix']",
+      "after": "now -1 hours",
+      "actualFormat": "unix"
+    }
+  },
+  {
+    "matchesJsonPath": {
+      "expression": "$['beforeDateTime']",
+      "before": "now +1 hours",
+      "actualFormat": "yyyy-MM-dd'T'HH:mm:ss'Z'"
+    }
+  },
+  {
+    "matchesJsonPath": {
+      "expression": "$['beforeDateTimeUnix']",
+      "before": "now +1 hours",
+      "actualFormat": "unix"
+    }
+  },
+  {
+    "matchesJsonPath": {
+      "expression": "$['array'][0]['relativeDate']",
+      "equalToDateTime": "now ##dateShift2 days",
+      "actualFormat": "yyyy-MM-dd",
+      "truncateExpected": "first hour of day"
+    }
+  },
+  {
+    "matchesJsonPath": {
+      "expression": "$['array'][1]['relativeDate']",
+      "equalToDateTime": "now ##dateShift3 days",
+      "actualFormat": "yyyy-MM-dd",
+      "truncateExpected": "first hour of day"
+    }
+  }
+]

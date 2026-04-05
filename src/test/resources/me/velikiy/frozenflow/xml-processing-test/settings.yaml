@@ -1,0 +1,7 @@
+snapshot:
+  headers:
+    - 'Accept'
+    - 'Content-Type'
+services:
+  test-dtd-processing:
+    proxy-base-url: http://localhost:{port}

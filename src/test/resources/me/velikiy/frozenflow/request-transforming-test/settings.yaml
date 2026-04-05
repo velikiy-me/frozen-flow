@@ -1,0 +1,54 @@
+snapshot:
+  headers:
+    - 'Accept'
+    - 'Content-Type'
+services:
+  request-transform:
+    proxy-base-url: 'http://localhost:{port}'
+    paths:
+      - path: '/json-string'
+        transformers:
+          request:
+            - 'string-to-json'
+          response:
+            - 'string-to-json'
+        mappings:
+          - request:
+              patterns:
+                body:
+                  - ref: '$.attribute'
+                    value: 'modified value'
+            response:
+              templates:
+                body:
+                  - ref: '$.attribute'
+                    value: 'modified value'
+      - path: '/'
+        transformers:
+          request:
+            - 'string-to-json'
+          response:
+            - 'string-to-json'
+        mappings:
+          - request:
+              patterns:
+                body:
+                  - ref: '$.attribute'
+                    value: 'modified value'
+            response:
+              templates:
+                body:
+                  - ref: '$.attribute'
+                    value: 'modified value'
+      - path: '/json'
+        mappings:
+          - request:
+              patterns:
+                body:
+                  - ref: '$.attribute'
+                    value: 'modified value'
+            response:
+              templates:
+                body:
+                  - ref: '$.attribute'
+                    value: 'modified value'

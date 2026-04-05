@@ -1,0 +1,14 @@
+{
+  "request": {
+    "urlPath": "/xml-body-relative-date",
+    "method": "POST",
+    "headers": {
+      "Content-Type": {
+        "contains": "text/xml"
+      }
+    }
+  },
+  "response": {
+    "status": 200
+  }
+}

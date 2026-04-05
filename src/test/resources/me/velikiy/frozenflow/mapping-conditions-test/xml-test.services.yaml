@@ -1,0 +1,112 @@
+test-xml-all-conditions-true:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/xml-body'
+      mappings:
+        - conditions:
+            body:
+              - ref: '/request/value'
+                type: 'exists'
+              - ref: '/request/valueAttr/@attr'
+                type: 'exists'
+              - ref: '/request/value'
+                value: 'Some value'
+              - ref: '/request/valueAttr/@attr'
+                value: 'Some value'
+              - ref: '/request/value'
+                type: 'regex'
+                value: '^Some value$'
+              - ref: '/request/valueAttr/@attr'
+                type: 'regex'
+                value: '^Some value$'
+          request:
+            patterns:
+              body:
+                - ref: '/request/value'
+                  value: 'Another value'
+test-xml-tag-exists-condition-false:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/xml-body'
+      mappings:
+        - conditions:
+            body:
+              - ref: '/request/nonexistingtag'
+                type: 'exists'
+          request:
+            patterns:
+              body:
+                - ref: '/request/value'
+                  value: 'Another value'
+test-xml-attr-exists-condition-false:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/xml-body'
+      mappings:
+        - conditions:
+            body:
+              - ref: '/request/valueAttr/@nonexistingattr'
+                type: 'exists'
+          request:
+            patterns:
+              body:
+                - ref: '/request/value'
+                  value: 'Another value'
+test-xml-tag-value-condition-false:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/xml-body'
+      mappings:
+        - conditions:
+            body:
+              - ref: '/request/value'
+                value: 'Non-existing value'
+          request:
+            patterns:
+              body:
+                - ref: '/request/value'
+                  value: 'Another value'
+test-xml-attr-value-condition-false:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/xml-body'
+      mappings:
+        - conditions:
+            body:
+              - ref: '/request/valueAttr/@attr'
+                value: 'Non-existing value'
+          request:
+            patterns:
+              body:
+                - ref: '/request/value'
+                  value: 'Another value'
+test-xml-tag-regex-condition-false:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/xml-body'
+      mappings:
+        - conditions:
+            body:
+              - ref: '/request/value'
+                type: 'regex'
+                value: '^Non-matching pattern$'
+          request:
+            patterns:
+              body:
+                - ref: '/request/value'
+                  value: 'Another value'
+test-xml-attr-regex-condition-false:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/xml-body'
+      mappings:
+        - conditions:
+            body:
+              - ref: '/request/valueAttr/@attr'
+                type: 'regex'
+                value: '^Non-matching pattern$'
+          request:
+            patterns:
+              body:
+                - ref: '/request/value'
+                  value: 'Another value'

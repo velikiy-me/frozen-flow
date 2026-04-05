@@ -1,0 +1,10 @@
+{
+  "request": {
+    "urlPath": "/params",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "body": "success"
+  }
+}

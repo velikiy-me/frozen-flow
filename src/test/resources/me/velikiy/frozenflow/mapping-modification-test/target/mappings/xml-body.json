@@ -1,0 +1,18 @@
+{
+  "request": {
+    "urlPath": "/xml-body",
+    "method": "POST",
+    "headers": {
+      "Content-Type": {
+        "contains": "text/xml"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "text/xml"
+    },
+    "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE response PUBLIC \"-//SomeRoot//DTD something v1//EN\" \"http://someinvalidDtd\"><response><value>Some value</value><valueAttr attr=\"Some value\"/><intValue>1</intValue><intValueAttr attr=\"1\"/><booleanValue>false</booleanValue><booleanValueAttr attr=\"false\"/><array><item><relativedate>someValue1</relativedate></item><item><relativedate>someValue2</relativedate></item></array><cdataValue><![CDATA[Some value]]></cdataValue></response>"
+  }
+}

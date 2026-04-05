@@ -1,0 +1,64 @@
+test-json-all-conditions-true:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/json-body'
+      mappings:
+        - conditions:
+            body:
+              - ref: '$.value'
+                type: 'exists'
+              - ref: '$.nullValue'
+                type: 'exists'
+              - ref: '$.value'
+                value: 'Some value'
+              - ref: '$.value'
+                type: 'regex'
+                value: '^Some value$'
+          request:
+            patterns:
+              body:
+                - ref: '$.value'
+                  value: 'Another value'
+test-json-exists-condition-false:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/json-body'
+      mappings:
+        - conditions:
+            body:
+              - ref: '$.nonExistingAttr'
+                type: 'exists'
+          request:
+            patterns:
+              body:
+                - ref: '$.value'
+                  value: 'Another value'
+test-json-value-condition-false:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/json-body'
+      mappings:
+        - conditions:
+            body:
+              - ref: '$.value'
+                value: 'Non-existing value'
+          request:
+            patterns:
+              body:
+                - ref: '$.value'
+                  value: 'Another value'
+test-json-regex-condition-false:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/json-body'
+      mappings:
+        - conditions:
+            body:
+              - ref: '$.value'
+                type: 'regex'
+                value: '^Non-matching pattern$'
+          request:
+            patterns:
+              body:
+                - ref: '$.value'
+                  value: 'Another value'

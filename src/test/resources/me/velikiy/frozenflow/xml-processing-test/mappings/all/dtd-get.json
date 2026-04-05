@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/dtd-with-default-attribute-value.dtd"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/xml-dtd"
+    },
+    "bodyFileName": "static/dtd-with-default-attribute-value.dtd"
+  }
+}

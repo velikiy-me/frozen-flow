@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE request PUBLIC "-//SomeRoot//DTD something v1//EN" "http://someinvalidDtd">
+<request>
+    <relativedate>2023-05-01</relativedate>
+    <relativedateAttr attr="2023-05-01"/>
+    <zonedrelativedate>2024-12-06</zonedrelativedate>
+    <zonedrelativedateAttr attr="2024-12-06"/>
+    <uuid>7ac26bd3-25f8-468a-9879-3ecb30b2dff2</uuid>
+    <uuidAttr attr="7ac26bd3-25f8-468a-9879-3ecb30b2dff2"/>
+    <regex>1234567890</regex>
+    <regexAttr attr="1234567890"/>
+    <afterdatetime>2099-11-01T12:00:00Z</afterdatetime>
+    <afterdatetimeAttr attr="2099-11-01T12:00:00Z"/>
+    <afterdatetimeunix>4097203200</afterdatetimeunix>
+    <afterdatetimeunixAttr attr="4097203200"/>
+    <beforedatetime>2023-11-01T13:00:00Z</beforedatetime>
+    <beforedatetimeAttr attr="2023-11-01T13:00:00Z"/>
+    <beforedatetimeunix>1698829200</beforedatetimeunix>
+    <beforedatetimeunixAttr attr="1698829200"/>
+    <any>12345</any>
+    <anyAttr attr = "12345"/>
+    <anystring>Some value</anystring>
+    <anystringAttr attr = "Some value"/>
+    <value>Some value</value>
+    <valueAttr attr = "Some value"/>
+    <array>
+        <item>
+            <relativedate>2023-07-01</relativedate>
+        </item>
+        <item>
+            <relativedate>2024-01-01</relativedate>
+        </item>
+    </array>
+</request>

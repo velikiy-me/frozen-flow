@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE response PUBLIC "-//SomeRoot//DTD something v1//EN" "http://someinvalidDtd">
+<response>
+    <value>Replaced value</value>
+    <valueAttr attr="Replaced value"/>
+    <intValue>2</intValue>
+    <intValueAttr attr="2"/>
+    <booleanValue>true</booleanValue>
+    <booleanValueAttr attr="true"/>
+    <array>
+        <item>
+            <relativedate>2023-07-01</relativedate>
+        </item>
+        <item>
+            <relativedate>2024-01-01</relativedate>
+        </item>
+    </array>
+    <cdataValue><![CDATA[Replaced value]]></cdataValue>
+</response>

@@ -1,0 +1,53 @@
+snapshot:
+  headers:
+    - 'Accept'
+    - 'Content-Type'
+services:
+  dependencies-test-json:
+    proxy-base-url: 'http://localhost:{port}'
+    paths:
+      - path: '/first-request-json'
+        mappings:
+          - id: 'first-request'
+            request:
+              patterns:
+                body:
+                  - ref: '$.uniqueAttribute'
+                    type: 'any-string'
+      - path: '/second-request-json'
+        mappings:
+          - request:
+              dependencies:
+                body:
+                  - ref: '$.id'
+                    mapping-id: 'first-request'
+                    source-ref: '$.result'
+                    service: 'dependencies-test-json'
+                  - ref: '$.itemId'
+                    mapping-id: 'first-request'
+                    source-ref: '$.resultList[*]'
+                    # service: 'self'
+  dependencies-test-xml:
+    proxy-base-url: 'http://localhost:{port}'
+    paths:
+      - path: '/first-request-xml'
+        mappings:
+          - id: 'first-request'
+            request:
+              patterns:
+                body:
+                  - ref: '/request/uniqueNode'
+                    type: 'any-string'
+      - path: '/second-request-xml'
+        mappings:
+          - request:
+              dependencies:
+                body:
+                  - ref: '/request/id'
+                    mapping-id: 'first-request'
+                    source-ref: '/response/@result'
+                    service: 'dependencies-test-xml'
+                  - ref: '/request/itemId'
+                    mapping-id: 'first-request'
+                    source-ref: '/response//resultList'
+                    # service: 'self'

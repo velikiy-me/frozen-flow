@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathTemplate": "/check"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {"value": "Value"},
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

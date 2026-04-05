@@ -1,0 +1,12 @@
+snapshot:
+  headers:
+    - 'Accept'
+    - 'Content-Type'
+    - 'Custom-Value-Request-Header'
+    - 'Custom-Regex-Request-Header'
+    - 'Custom-Uuid-Request-Header'
+service-config-files:
+  - 'json-test.services.yaml'
+  - 'xml-test.services.yaml'
+  - 'query-params-test.services.yaml'
+  - 'headers-test.services.yaml'

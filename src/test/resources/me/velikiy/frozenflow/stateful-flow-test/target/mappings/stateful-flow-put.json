@@ -1,0 +1,9 @@
+{
+  "request": {
+    "method": "PUT",
+    "urlPattern": "/store/[0-9]+"
+  },
+  "response": {
+    "status": 201
+  }
+}

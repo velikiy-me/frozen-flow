@@ -1,0 +1,119 @@
+test-xml-mappings:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/xml-body'
+      mappings:
+        - request:
+            patterns:
+              body:
+                - ref: '/request/relativedate/text()'
+                  type: 'relative-date'
+                  format: 'yyyy-MM-dd'
+                - ref: '/request/relativedateAttr/@attr'
+                  type: 'relative-date'
+                  format: 'yyyy-MM-dd'
+                - ref: '/request/zonedrelativedate/text()'
+                  type: 'relative-date'
+                  timezone: 'Asia/Hong_Kong'
+                  format: 'yyyy-MM-dd'
+                - ref: '/request/zonedrelativedateAttr/@attr'
+                  type: 'relative-date'
+                  timezone: 'Asia/Hong_Kong'
+                  format: 'yyyy-MM-dd'
+                - ref: '/request/uuid/text()'
+                  type: 'uuid'
+                - ref: '/request/uuidAttr/@attr'
+                  type: 'uuid'
+                - ref: '/request/regex/text()'
+                  type: 'regex'
+                  value: '^\d{10}$'
+                - ref: '/request/regexAttr/@attr'
+                  type: 'regex'
+                  value: '^\d{10}$'
+                - ref: '/request/afterdatetime/text()'
+                  type: 'after'
+                  format: "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                  value: 'now -1 hours'
+                - ref: '/request/afterdatetimeAttr/@attr'
+                  type: 'after'
+                  format: "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                  value: 'now -1 hours'
+                - ref: '/request/afterdatetimeunix/text()'
+                  type: 'after'
+                  format: "unix"
+                  value: 'now -1 hours'
+                - ref: '/request/afterdatetimeunixAttr/@attr'
+                  type: 'after'
+                  format: "unix"
+                  value: 'now -1 hours'
+                - ref: '/request/beforedatetime/text()'
+                  type: 'before'
+                  format: "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                  value: 'now +1 hours'
+                - ref: '/request/beforedatetimeAttr/@attr'
+                  type: 'before'
+                  format: "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                  value: 'now +1 hours'
+                - ref: '/request/beforedatetimeunix/text()'
+                  type: 'before'
+                  format: "unix"
+                  value: 'now +1 hours'
+                - ref: '/request/beforedatetimeunixAttr/@attr'
+                  type: 'before'
+                  format: "unix"
+                  value: 'now +1 hours'
+                - ref: '/request/any/text()'
+                  type: 'any'
+                - ref: '/request/anyAttr/@attr'
+                  type: 'any'
+                - ref: '/request/anystring/text()'
+                  type: 'any-string'
+                - ref: '/request/anystringAttr/@attr'
+                  type: 'any-string'
+                - ref: '/request/value/text()'
+                  value: '${xmlunit.matchesRegex(^Some value$)}'
+                - ref: '/request/valueAttr/@attr'
+                  value: '${xmlunit.matchesRegex(^Some value$)}'
+                - ref: '/request/array/item/relativedate/text()'
+                  type: 'relative-date'
+                  format: 'yyyy-MM-dd'
+          response:
+            templates:
+              body:
+                - ref: '/response/value/text()'
+                  value: 'Replaced value'
+                - ref: '/response/valueAttr/@attr'
+                  value: 'Replaced value'
+                - ref: '/response/intValue/text()'
+                  value: 2
+                - ref: '/response/intValueAttr/@attr'
+                  value: 2
+                - ref: '/response/booleanValue/text()'
+                  value: true
+                - ref: '/response/booleanValueAttr/@attr'
+                  value: true
+                - ref: '/response/array/item/relativedate/text()'
+                  value: "{{xPath request.body '/request/array/item[{1}]/relativedate/text()'}}"
+                - ref: '/response/cdataValue/text()'
+                  value: 'Replaced value'
+    - path: '/xml-body-relative-date'
+      mappings:
+        - request:
+            patterns:
+              body:
+                - ref: '/request/zonedRelativeDate/text()'
+                  type: 'relative-date'
+                  timezone: 'Asia/Hong_Kong'
+                  format: 'yyyy-MM-dd'
+                - ref: '/request/zonedRelativeDateAttr/@attr'
+                  type: 'relative-date'
+                  timezone: 'Asia/Hong_Kong'
+                  format: 'yyyy-MM-dd'
+                - ref: '/request/truncatedRelativeDate/text()'
+                  type: 'relative-date'
+                  format: 'yyyy-MM-dd'
+                  truncation: 'first day of month'
+                - ref: '/request/truncatedRelativeDateAttr/@attr'
+                  type: 'relative-date'
+                  format: 'yyyy-MM-dd'
+                  truncation: 'first day of month'

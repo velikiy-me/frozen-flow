@@ -1,0 +1,23 @@
+{
+  "request": {
+    "urlPath": "/json-string",
+    "method": "POST",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "application/json"
+      }
+    },
+    "bodyPatterns": [
+      {
+        "equalTo": "{\"attribute\": \"modified value\"}"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json;charset=UTF-8"
+    },
+    "body": "{\"attribute\": \"modified value\"}"
+  }
+}

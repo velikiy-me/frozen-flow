@@ -1,0 +1,35 @@
+{
+  "id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+  "name": "json-request-mapping",
+  "request": {
+    "method": "POST",
+    "url": "/json-request-mapping",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "application/json"
+      }
+    },
+    "bodyPatterns": [
+      {
+        "equalToJson": {
+          "element": "value"
+        }
+      },
+      {
+        "matchesJsonPath": {
+          "expression": "$.element",
+          "equalTo": "value"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
+}

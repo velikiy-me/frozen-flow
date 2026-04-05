@@ -1,0 +1,18 @@
+{
+  "request": {
+    "urlPath": "/json-body",
+    "method": "POST",
+    "headers": {
+      "Content-Type": {
+        "contains": "application/json"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json;charset=UTF-8"
+    },
+    "body": "{\"valueTemplate\": \"Some value\",\"intValueTemplate\": 1, \"booleanValueTemplate\": false, \"nullValueTemplate\": null, \"array\": [{\"relativeDate\": \"someValue1\"},{\"relativeDate\": \"someValue2\"}]}"
+  }
+}

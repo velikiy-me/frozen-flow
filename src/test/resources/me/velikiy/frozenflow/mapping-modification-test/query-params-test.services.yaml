@@ -1,0 +1,15 @@
+test-query-params-mappings:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/params'
+      mappings:
+        - request:
+            patterns:
+              query-params:
+                - ref: 'param1'
+                  value: 'exact_value'
+                - ref: 'param2'
+                  type: 'regex'
+                  value: '^test_\d{3}$'
+                - ref: 'param3'
+                  type: 'uuid'

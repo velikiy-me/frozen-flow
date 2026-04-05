@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "frozen-flow-config",
+  "title": "frozen-flow configuration",
+  "description": "FrozenFlow mapping configuration",
+  "type": "object",
+  "properties": {
+    "snapshot": {
+      "type": "object",
+      "properties": {
+        "headers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "services": {
+      "$ref": "config-services-schema.json"
+    },
+    "service-config-files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minItems": 1,
+        "uniqueItems": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,22 @@
+test-headers-mappings:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/headers'
+      mappings:
+        - request:
+            patterns:
+              headers:
+                - ref: 'Custom-Value-Request-Header'
+                  value: 'exact value'
+                - ref: 'Custom-Regex-Request-Header'
+                  type: 'regex'
+                  value: '^[a-zA-Z]+_[a-zA-Z]+_\d{3}$'
+                - ref: 'Custom-Uuid-Request-Header'
+                  type: 'uuid'
+          response:
+            templates:
+              headers:
+                - ref: 'Custom-Response-Header'
+                  value: 'updated value'
+                - ref: 'Custom-Template-Response-Header'
+                  value: "{{date (parseDate '2024-04-04T04:04:04.004Z') format='dd.MM.yyyy'}}"

@@ -1,0 +1,48 @@
+POST localhost:8090/__admin/extended/recordings/snapshot
+Content-Type: application/json
+
+{
+    "name": "snapshot_name"
+}
+
+###
+
+GET http://localhost:8090/__admin/requests
+
+###
+
+DELETE http://localhost:8090/__admin/requests
+
+###
+
+GET http://localhost:8090/__admin/mappings
+
+###
+
+POST localhost:8090/__admin/mappings/reset
+
+{}
+
+###
+
+POST localhost:8090/__admin/reset
+
+{}
+
+###
+
+GET localhost:8090/__admin/requests/unmatched/near-misses
+
+###
+
+GET http://localhost:8090/__admin/state-extension/contexts
+
+###
+
+GET http://localhost:8090/__admin/extended/misses
+
+###
+
+POST http://localhost:8090/__admin/extended/misses/reset
+
+{}

@@ -1,0 +1,19 @@
+{
+  "request": {
+    "urlPath": "/first-request-json",
+    "method": "POST"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json;charset=UTF-8"
+    },
+    "jsonBody": {
+      "result": "{{randomValue type='UUID'}}",
+      "resultList": [
+        "{{randomValue type='UUID'}}",
+        "{{randomValue type='UUID'}}"
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "urlPath": "/xml-body",
+    "method": "POST",
+    "headers": {
+      "Content-Type": {
+        "contains": "text/xml"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": "success"
+  }
+}

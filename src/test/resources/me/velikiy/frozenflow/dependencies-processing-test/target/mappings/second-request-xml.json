@@ -1,0 +1,24 @@
+{
+  "request": {
+    "urlPath": "/second-request-xml",
+    "method": "POST",
+    "headers": {
+      "Content-Type": {
+        "contains": "text/xml"
+      }
+    },
+    "bodyPatterns": [
+      {
+        "equalToXml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE request PUBLIC \"-//SomeRoot//DTD something v1//EN\" \"http://someinvalidDtd\"><request><id>${xmlunit.matchesRegex(^[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$)}</id><itemId>${xmlunit.matchesRegex(^[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$)}</itemId></request>",
+        "enablePlaceholders": true
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "text/xml"
+    },
+    "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE response PUBLIC \"-//SomeRoot//DTD something v1//EN\" \"http://someinvalidDtd\"><response><result>success</result></response>"
+  }
+}

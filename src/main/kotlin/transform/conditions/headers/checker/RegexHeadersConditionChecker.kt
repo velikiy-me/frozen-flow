@@ -1,0 +1,33 @@
+/*
+ *  Copyright © 2026 Vladimir Velikiy
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+package me.velikiy.frozenflow.transform.conditions.headers.checker
+
+import com.github.tomakehurst.wiremock.matching.*
+import me.velikiy.frozenflow.transform.model.*
+
+object RegexHeadersConditionChecker : RequestHeadersConditionChecker {
+
+    override fun check(headers: Map<String, MultiValuePattern>, condition: Condition): Boolean {
+        requireNotNull(condition.value) {
+            "Value must be specified in headers regex condition for reference: '${condition.ref}'!"
+        }
+        require(condition.value is String) {
+            "Expected string value representation for reference: '${condition.ref}'!"
+        }
+        val pattern = headers[condition.ref]
+        return pattern != null && condition.value.toRegex().matches(pattern.expected)
+    }
+}

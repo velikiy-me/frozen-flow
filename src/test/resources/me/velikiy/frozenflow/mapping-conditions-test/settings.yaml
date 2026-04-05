@@ -1,0 +1,10 @@
+snapshot:
+  headers:
+    - 'Accept'
+    - 'Content-Type'
+    - 'Test-Header'
+    - 'Test-Empty-Header'
+service-config-files:
+  - 'json-test.services.yaml'
+  - 'xml-test.services.yaml'
+  - 'headers-test.services.yaml'

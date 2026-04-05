@@ -1,0 +1,10 @@
+{
+  "request": {
+    "urlPath": "/headers",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "body": "success"
+  }
+}

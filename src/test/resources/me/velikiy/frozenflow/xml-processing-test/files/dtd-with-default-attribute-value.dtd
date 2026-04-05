@@ -1,0 +1,4 @@
+<!ELEMENT nodeWithDefaultAttributeValue EMPTY>
+<!ATTLIST nodeWithDefaultAttributeValue
+    attribute  CDATA #REQUIRED
+    attributeWithDefaultValue CDATA 'defaultValue'>

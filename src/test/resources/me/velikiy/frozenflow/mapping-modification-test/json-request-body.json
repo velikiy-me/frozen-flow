@@ -1,0 +1,22 @@
+{
+  "relativeDate": "2023-05-01",
+  "zonedRelativeDate": "2024-12-06",
+  "nullRelativeDate": null,
+  "uuid": "7ac26bd3-25f8-468a-9879-3ecb30b2dff2",
+  "regex": "1234567890",
+  "afterDateTime": "2099-11-01T12:00:00Z",
+  "afterDateTimeUnix": 4097203200,
+  "beforeDateTime": "2023-11-01T13:00:00Z",
+  "beforeDateTimeUnix": 1698829200,
+  "any": 12345,
+  "anyString": "Some value",
+  "value": "Some value",
+  "array": [
+    {
+      "relativeDate": "2023-07-01"
+    },
+    {
+      "relativeDate": "2024-01-01"
+    }
+  ]
+}

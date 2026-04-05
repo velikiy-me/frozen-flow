@@ -1,0 +1,15 @@
+{
+  "request": {
+    "urlPath": "/headers",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json;charset=UTF-8",
+      "Custom-Response-Header": "initial value",
+      "Custom-Template-Response-Header": "2000-01-01T00:00:00.000Z"
+    },
+    "body": "success"
+  }
+}

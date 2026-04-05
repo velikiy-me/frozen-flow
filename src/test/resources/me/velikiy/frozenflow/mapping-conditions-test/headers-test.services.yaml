@@ -1,0 +1,64 @@
+test-headers-all-conditions-true:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/headers'
+      mappings:
+        - conditions:
+            headers:
+              - ref: 'Test-Header'
+                type: 'exists'
+              - ref: 'Test-Empty-Header'
+                type: 'exists'
+              - ref: 'Test-Header'
+                value: 'Some value'
+              - ref: 'Test-Header'
+                type: 'regex'
+                value: '^Some value$'
+          request:
+            patterns:
+              headers:
+                - ref: 'Test-Header'
+                  value: 'Another value'
+test-headers-exists-condition-false:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/headers'
+      mappings:
+        - conditions:
+            headers:
+              - ref: 'Non-Existing-Header'
+                type: 'exists'
+          request:
+            patterns:
+              headers:
+                - ref: 'Test-Header'
+                  value: 'Another value'
+test-headers-value-condition-false:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/headers'
+      mappings:
+        - conditions:
+            headers:
+              - ref: 'Test-Header'
+                value: 'Non-existing value'
+          request:
+            patterns:
+              headers:
+                - ref: 'Test-Header'
+                  value: 'Another value'
+test-headers-regex-condition-false:
+  proxy-base-url: 'http://localhost:{port}'
+  paths:
+    - path: '/headers'
+      mappings:
+        - conditions:
+            headers:
+              - ref: 'Test-Header'
+                type: 'regex'
+                value: '^Non-matching pattern$'
+          request:
+            patterns:
+              headers:
+                - ref: 'Test-Header'
+                  value: 'Another value'

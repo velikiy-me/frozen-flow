@@ -1,0 +1,23 @@
+@startuml
+
+entity "Dependency" as dependency {
+  *ref
+  *source_ref
+}
+entity "Dependent stub" as dependent_stub
+entity "Primary stub" as primary_stub
+entity "DependentMapping" as dependent_mapping {
+  *service
+  mappingId
+}
+entity "PrimaryMapping" as primary_mapping {
+  *service
+  mappingId
+}
+
+dependency }-- dependent_mapping
+dependency }-- primary_mapping
+primary_stub }-{ primary_mapping
+dependent_mapping }-{ dependent_stub
+
+@enduml
